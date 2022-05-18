@@ -12,7 +12,7 @@
           <label>Last Name</label>
         </div>
         <div class="text-box">
-          <input v-model="email" type="email" name="" required="required" />
+          <input v-model="email" type="text" name="" required="required" />
           <label>E-mail</label>
         </div>
         <div class="select-box">
@@ -24,17 +24,16 @@
           </select>
         </div>
         <div class="flex-center">
-          <button class="submit-button" @click="submitForm()">Submit</button>
+          <button class="submit-button" @click="submitForm()" type="button">Submit</button>
         </div>
       </form>
-      {{ firstName }} {{ lastName }} {{ email }} {{ gender }}
     </div>
+    <NuxtLink to="/users">List of user</NuxtLink>
   </div>
 </template>
 
 <script>
 export default {
-  name: "IndexPage",
   data() {
     return {
       firstName: "",
@@ -44,22 +43,29 @@ export default {
     };
   },
   methods: {
-    submitForm() {
-      
-      console.log(this.checkForm());
-      this.checkForm();
+    async submitForm() {
+      if (this.checkForm()) {
+        let data = {};
+        data.firstName = this.firstName;
+        data.lastName = this.lastName;
+        data.email = this.email;
+        data.gender = this.gender;
+        console.log(data);
+        await this.$axios.$post("http://localhost:3000/api/user", data);
+      }
     },
+
     checkForm() {
       var check = true;
       var inputs = document.querySelectorAll(".text-box > input");
-      inputs.forEach(input => {
-        if(!input.value){
+      inputs.forEach((input) => {
+        if (!input.value) {
           input.style.borderColor = "red";
           check = false;
         } else {
           input.style.borderColor = "#fff";
         }
-      })
+      });
       return check;
     },
   },

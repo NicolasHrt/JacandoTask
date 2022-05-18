@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const user = require("../models/user");
 const User = require("../models/user");
 
 router.post("/user", async (req, res) => {
@@ -25,12 +26,29 @@ router.post("/user", async (req, res) => {
 
 router.get("/user", async (req, res) => {
   try {
-    const page = req.query.page;
-    const limit = req.query.limit;
+    const page = parseInt(req.query.page);
+    const limit = parseInt(req.query.limit);
 
     const firstIndex = (page - 1) * limit;
+    const lastIndex = page * limit;
 
-    let users = await User.find().limit(limit).skip(firstIndex);
+    let users = {};
+
+    if(lastIndex < await User.countDocuments().exec()){
+      users.next = {
+        page: page + 1,
+        limit: limit
+      }
+    }
+
+    if(firstIndex > 0 ) {
+      users.previous = {
+        page: page - 1,
+        limit: limit
+      }
+    }
+    users.total = await User.countDocuments().exec();
+    users.users = await User.find().limit(limit).skip(firstIndex);
 
     res.json({
       users: users,
