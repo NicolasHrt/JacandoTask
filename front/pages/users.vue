@@ -13,7 +13,6 @@
       <i v-if="this.page > 1" class="fa-solid fa-arrow-left fa-xl" @click="previousPage()"></i>
       <i v-if="this.page * this.limit < this.totalUser" class="fa-solid fa-arrow-right fa-xl" @click="nextPage()"></i>
     </div>
-    {{ page }}
   </div>
 </template>
 <script>

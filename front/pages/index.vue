@@ -39,12 +39,13 @@ export default {
       firstName: "",
       lastName: "",
       email: "",
-      gender: "",
+      gender: "Male",
     };
   },
   methods: {
     async submitForm() {
       if (this.checkForm()) {
+        var inputs = document.querySelectorAll(".text-box > input");
         let data = {};
         data.firstName = this.firstName;
         data.lastName = this.lastName;
@@ -52,6 +53,9 @@ export default {
         data.gender = this.gender;
         console.log(data);
         await this.$axios.$post("http://localhost:3000/api/user", data);
+        this.firstName = '';
+        this.lastName = '';
+        this.email = '';
       }
     },
 
