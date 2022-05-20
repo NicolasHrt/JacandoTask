@@ -6,7 +6,7 @@ const cors = require("cors");
 
 const app = express();
 
-mongoose.connect("mongodb+srv://NicoH:nicolas10@jacandotask.wmhtx.mongodb.net/?retryWrites=true&w=majority", (err) => {
+mongoose.connect("mongodb+srv://root:root@cluster0.fuxvk.mongodb.net/?retryWrites=true&w=majority", (err) => {
   if (err) {
       console.log(err);
   } else {

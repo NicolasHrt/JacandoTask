@@ -19,7 +19,7 @@
           <label for="gender">Gender :</label>
           <select v-model="gender" name="gender">
             <option value="Male">Male</option>
-            <option selected="selected" value="Female">Female</option>
+            <option value="Female">Female</option>
             <option value="Other">Other</option>
           </select>
         </div>

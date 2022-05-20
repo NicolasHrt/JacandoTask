@@ -21,7 +21,7 @@ export default {
   async asyncData({ $axios }) {
     try {
       let response = await $axios.$get(
-        "http://localhost:3000/api/user?page=1&limit=2"
+        "http://localhost:3000/api/user?page=1&limit=4"
       );
       //   console.log(response.users);
       return {
@@ -35,7 +35,7 @@ export default {
   data() {
     return {
       page: 1,
-      limit: 2,
+      limit: 4,
     };
   },
   methods: {
