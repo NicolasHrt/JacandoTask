@@ -2,7 +2,7 @@
 
 Hey, here is the task you asked me to do. In this project you can add a user by filling out the form and click on the submit button, if there is any information missing the missing fields are highlighted in red. 
 
-It wasn't asked but you can also see the list of users added in the database by clicking on the button list of users. There is also a paging system to see all the user's information.
+It wasn't asked but you can also see the list of users added in the database by clicking on the button list of users. There is also a paging system to see all the user's information (4 users per page).
 
 
 ## Prerequisites
