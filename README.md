@@ -12,6 +12,7 @@ To run the projet you have to install nodeJs on your computer https://nodejs.org
 After installing nodejs, you have to go in the server directory and run the command ```npm run start``` to run the server
 
 To run the front-end application, you have go in the front directory and run the commmand ```npm run dev```
+If it doesn't run try to run the command ```npm install nuxt```
 
 ## Technologies
 
